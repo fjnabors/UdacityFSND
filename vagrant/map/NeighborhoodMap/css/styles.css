@@ -70,7 +70,7 @@ body {
 .list {
 	order: 1;
 	flex-grow: 0;
-	background: linear-gradient(141deg, #000000 0%, #010101 51%, #434343 75%);
+	background: linear-gradient(141deg, #000000 0%, #434343 51%, #010101 75%);
 	opacity: 0.95;
 }
 
