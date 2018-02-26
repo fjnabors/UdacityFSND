@@ -95,6 +95,10 @@ body {
 	border-radius: 15px
 }
 
+.restaurant:hover {
+	cursor: pointer;
+}
+
 input {
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
