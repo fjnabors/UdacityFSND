@@ -84,11 +84,11 @@ var Location = function(data) {
   });
 
 
-  this.showMarker = ko.computed(function() {
-    if (this.visible() === true) {
-      this.marker.setMap(map);
-    } else {
+  this.hide = ko.computed(function() {
+    if (this.visible() === false) {
       this.marker.setMap(null);
+    } else {
+      this.marker.setMap(map);
     }
     return;
   }, this);
