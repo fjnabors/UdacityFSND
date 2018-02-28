@@ -74,5 +74,19 @@ var locations = [{
       lat: 35.1077662,
       lng: -89.8880516
     }
+  },
+  {
+    title: "Tom's Barbeque",
+    position: {
+      lat: 35.0369888,
+      lng: -89.93745849999999
+    }
+  },
+  {
+    title: "Las Delcias",
+    position: {
+       lat: 35.0885476,
+       lng: -89.87327999999999
+    }
   }
 ];

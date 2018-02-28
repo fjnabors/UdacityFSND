@@ -19,6 +19,10 @@ function ViewModel() {
     }
   });
 
+  locations.sort(function(a, b) {
+    return a.title.localeCompare(b.title);
+  });
+
   locations.forEach(function(location) {
     self.locationList.push(new Location(location));
   });
