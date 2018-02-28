@@ -1,3 +1,5 @@
+var prevLocation = null;
+
 function ViewModel() {
   const self = this;
   this.searchTerm = ko.observable("");
@@ -95,6 +97,11 @@ var Location = function(data) {
 
   this.marker.addListener('click', function() {
     populateInfoWindow(self);
+    if (prevLocation){
+      prevLocation.infowindow.close()
+      prevLocation.marker.setAnimation(null);
+    }
+    prevLocation = self;
   });
 
   this.animate = function(restaurant) {
@@ -116,7 +123,7 @@ function populateInfoWindow(location) {
   location.infowindow.setContent(innerHTML);
 
   location.marker.setAnimation(google.maps.Animation.BOUNCE);
-  setTimeout(function() {
+  setTimeout(function() {infowindow
     location.marker.setAnimation(null);
   }, 2100);
   // Open the infowindow on the correct marker.
