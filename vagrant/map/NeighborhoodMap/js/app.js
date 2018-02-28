@@ -2,7 +2,7 @@ var prevLocation = null;
 
 function ViewModel() {
   const self = this;
-  this.searchTerm = ko.observable("");
+  this.filter = ko.observable("");
   this.locationList = ko.observableArray([]);
 
   // Foursquare API settings
@@ -28,14 +28,14 @@ function ViewModel() {
   });
 
   this.filteredLocations = ko.computed(function() {
-    var searchString = self.searchTerm().toLowerCase();
+    var searchString = self.filter().toLowerCase();
     if (searchString) {
       return ko.utils.arrayFilter(self.locationList(), function(
         location) {
-        var string = location.title.toLowerCase();
-        var result = (string.search(filter) >= 0);
-        location.visible(result);
-        return result;
+        var name = location.title.toLowerCase();
+        var isShown = (name.search(searchString) >= 0);
+        location.visible(isShown);
+        return isShown;
       });
     } else {
       self.locationList().forEach(function(location) {
@@ -108,7 +108,7 @@ var Location = function(data) {
     prevLocation = self;
   });
 
-  this.populate = function(restaurant) {
+  this.populate = function(restaurants) {
     google.maps.event.trigger(self.marker, 'click');
   };
 };

@@ -18,7 +18,7 @@
 		<div class="list" id="list">
 			<div class="search-area" id="search-area">
 				<span class"search-left-text"> Search </span>
-				<input class="search-box" id="search-box" data-bind="textInput: searchTerm, valueUpdate: 'afterkeydown'" />
+				<input class="search-box" id="search-box" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" />
 			</div>
 			<ul class="locations" id="locations" data-bind="foreach: filteredLocations">
 				<li class="restaurant" id="restaurant" data-bind="text: title, click: populate"></li>
