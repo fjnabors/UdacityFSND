@@ -67,5 +67,12 @@ var locations = [{
       lat: 35.0515317,
       lng: -89.90980859999999
     }
+  },
+  {
+    title: "Mosa Asian Bistro",
+    position: {
+      lat: 35.1077662,
+      lng: -89.8880516
+    }
   }
 ];

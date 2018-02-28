@@ -20,8 +20,8 @@
 				<span class"search-left-text"> Search </span>
 				<input class="search-box" id="search-box" data-bind="textInput: searchTerm, valueUpdate: 'afterkeydown'" />
 			</div>
-			<ul class="locations" id="locations" data-bind="foreach: filteredList">
-				<li class="restaurant" id="restaurant" data-bind="text: title, click: animate"></li>
+			<ul class="locations" id="locations" data-bind="foreach: filteredLocations">
+				<li class="restaurant" id="restaurant" data-bind="text: title, click: populate"></li>
 			</ul>
 		</div>
 		<div class="map" id="map">Google Maps has encountered an error. Please refresh the page.</div>

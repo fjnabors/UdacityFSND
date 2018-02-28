@@ -23,14 +23,9 @@ function ViewModel() {
     self.locationList.push(new Location(location));
   });
 
-  this.filteredList = ko.computed(function() {
-    var filter = self.searchTerm().toLowerCase();
-    if (!filter) {
-      self.locationList().forEach(function(location) {
-        location.visible(true);
-      });
-      return self.locationList();
-    } else {
+  this.filteredLocations = ko.computed(function() {
+    var searchString = self.searchTerm().toLowerCase();
+    if (searchString) {
       return ko.utils.arrayFilter(self.locationList(), function(
         location) {
         var string = location.title.toLowerCase();
@@ -38,6 +33,11 @@ function ViewModel() {
         location.visible(result);
         return result;
       });
+    } else {
+      self.locationList().forEach(function(location) {
+        location.visible(true);
+      });
+      return self.locationList();
     }
   }, self);
 }
@@ -104,7 +104,7 @@ var Location = function(data) {
     prevLocation = self;
   });
 
-  this.animate = function(restaurant) {
+  this.populate = function(restaurant) {
     google.maps.event.trigger(self.marker, 'click');
   };
 };
@@ -123,9 +123,12 @@ function populateInfoWindow(location) {
   location.infowindow.setContent(innerHTML);
 
   location.marker.setAnimation(google.maps.Animation.BOUNCE);
-  setTimeout(function() {infowindow
-    location.marker.setAnimation(null);
+  setTimeout(function() {location.marker.setAnimation(null);
   }, 2100);
+
+  location.infowindow.addListener('closeclick', function() {
+      location.marker.setAnimation(null);
+  });
   // Open the infowindow on the correct marker.
   location.infowindow.open(map, location.marker);
 }
